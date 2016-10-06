@@ -28,11 +28,15 @@
             . '<div class="cell">' . $SongRow['song_artist'] . '</div>'
             . '<div class="cell">' . $SongRow['year'] . '</div>'
             . '</div>';
-
           }
-
-
         ?>
+
+        <form action="insert_song.php" method="post" >
+        Name: <input type="text" name="song_name" />
+        Artist: <input type="text" name="song_artist" />
+        Year: <input type="text" name="year" />
+        <input type="Submit" /></form>
+
       </div>
 
       <div class="table">
