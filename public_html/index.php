@@ -14,7 +14,7 @@
   </head>
   <body>
     <div class=main_divider>
-    <div class ="table">
+    <table>
         <?php
           $SongQuery = "SELECT * FROM songs";
           mysqli_query($db, $SongQuery) or die('Error connecting to db');
@@ -22,24 +22,26 @@
 
           $SongRow = mysqli_fetch_array($SongResult);
 
+          echo  '<tr>
+                  <th>Song Name</th>
+                  <th>Artist</th>
+                  <th>Year</th>
+                  </tr>';
+
           while ($SongRow = mysqli_fetch_array($SongResult)) {
-            echo '<div class="table_row">'
-            . '<div class="cell">' . $SongRow['song_name'] . '</div>'
-            . '<div class="cell">' . $SongRow['song_artist'] . '</div>'
-            . '<div class="cell">' . $SongRow['year'] . '</div>'
-            . '</div>';
+            echo '<tr>'
+            . '<td class="cell">' . $SongRow['song_name'] . '</td>'
+            . '<td class="cell">' . $SongRow['song_artist'] . '</td>'
+            . '<td class="cell">' . $SongRow['year'] . '</td>'
+            . '</tr>';
           }
         ?>
+      </table>
 
-        <form action="insert_song.php" method="post" >
-        Name: <input type="text" name="song_name" />
-        Artist: <input type="text" name="song_artist" />
-        Year: <input type="text" name="year" />
-        <input type="Submit" /></form>
 
-      </div>
 
-      <div class="table">
+      <table>
+
         <?php
           $SingerQuery = "SELECT * FROM singers";
           mysqli_query($db, $SingerQuery) or die('Error connecting to db');
@@ -47,33 +49,51 @@
 
           $SingerRow = mysqli_fetch_array($SingerResult);
 
+          echo  '<tr>
+                  <th>Name</th>
+                  <th>Age</th>
+                  </tr>';
+
           while ($SingerRow = mysqli_fetch_array($SingerResult)) {
-            echo '<div class="table_row">'
-            . '<div class="cell">' . $SingerRow['name'] . '</div>'
-            . '<div class="cell">' . $SingerRow['age'] . '</div>'
-            . '</div>';
+            echo '<tr>'
+            . '<td class="cell">' . $SingerRow['name'] . '</td>'
+            . '<td class="cell">' . $SingerRow['age'] . '</td>'
+            . '</tr>';
           }
         ?>
-      </div>
+      </table>
 
-      <div class="table">
+      <table>
         <?php
           $JoinQuery = "SELECT * FROM songs INNER JOIN singers ON singers.name = songs.song_artist";
           mysqli_query($db, $JoinQuery) or die('Error connecting to db');
           $JoinResult = mysqli_query($db, $JoinQuery);
 
           $JoinRow = mysqli_fetch_array($JoinResult);
+          echo  '<tr>
+                  <th>Name</th>
+                  <th>Age</th>
+                  <th>Year</th>
+                  </tr>';
 
           while ($JoinRow = mysqli_fetch_array($JoinResult)) {
-            echo '<div class="table_row">'
-            . '<div class="cell">' . $JoinRow['name'] . '</div>'
-            . '<div class="cell">' . $JoinRow['age'] . '</div>'
-            . '<div class="cell">' . $JoinRow['year'] . '</div>'
-            . '</div>';
+            echo '<tr>'
+            . '<td class="cell">' . $JoinRow['name'] . '</td>'
+            . '<td class="cell">' . $JoinRow['age'] . '</td>'
+            . '<td class="cell">' . $JoinRow['year'] . '</td>'
+            . '</tr>';
           }
           mysqli_close($db);
         ?>
-      </div>
+      </table>
+
+      <form action="insert_song.php" method="post" >
+      Name: <input type="text" name="song_name" />
+      Artist: <input type="text" name="song_artist" />
+      Year: <input type="text" name="year" />
+      <input type="Submit" /></form>
     </div>
+
+
   </body>
 </html>
