@@ -92,11 +92,39 @@
         ?>
       </table>
 
-      <form action="insert_song.php" method="post" >
-      Name: <input type="text" name="song_name" />
-      Artist: <input type="text" name="song_artist" />
-      Year: <input type="text" name="year" />
-      <input type="Submit" /></form>
+      <div class="forms">
+        <form action="insert_song.php" method="post" >
+          <h2>Add a Song</h2>
+          <p>
+            <label for"song_name">Song Name: </label>
+            <input type="text" name="song_name" id="song_name">
+          </p>
+          <p>
+            <label for"song_artist">Artist's Name: </label>
+            <input type="text" name="song_artist" id="song_artist">
+          </p>
+          <p>
+            <label for"year">Year: </label>
+            <input type="text" name="year" id="year">
+          </p>
+          <input type="submit" value"Submit">
+        </form>
+
+
+        <form action="insert_artist.php" method="post" >
+          <h2>Add a Singer</h2>
+          <p>
+            <label for"name">Artist Name: </label>
+            <input type="text" name="name" id="name">
+          </p>
+          <p>
+            <label for"age">Artist Age: </label>
+            <input type="text" name="age" id="age">
+          </p>
+          <input type="submit" value"Submit">
+        </form>
+      </div>
+
     </div>
 
 
