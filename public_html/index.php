@@ -14,6 +14,10 @@
   </head>
   <body>
     <div class=main_divider>
+
+    <h1>Musical Database Dashboard</h1>
+
+    <h2>Song Information</h2>
     <table>
         <?php
           $SongQuery = "SELECT * FROM songs";
@@ -39,7 +43,7 @@
       </table>
 
 
-
+      <h2>Singer Information</h2>
       <table>
 
         <?php
@@ -63,6 +67,7 @@
         ?>
       </table>
 
+      <h2>Years that singers released their songs</h2>
       <table>
         <?php
           $JoinQuery = "SELECT * FROM songs INNER JOIN singers ON singers.name = songs.song_artist";
